@@ -10,5 +10,9 @@ package world;
  * @author Dima
  */
 public class Region {
+    String name;
+    Region(String name) {
+        this.name = name;
+    }
     
 }

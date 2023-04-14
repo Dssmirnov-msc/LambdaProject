@@ -5,12 +5,15 @@
  */
 package com.mephi.smirnov.lambdaproject;
 
+import dynamic.Engine;
+
 /**
  *
  * @author Dima
  */
 public class MainFrame extends javax.swing.JFrame {
-
+    
+    private Engine engine;
     /**
      * Creates new form MainFrame
      */
@@ -67,6 +70,11 @@ public class MainFrame extends javax.swing.JFrame {
         jScrollPane3.setViewportView(CharTree);
 
         StartButton.setText("Start");
+        StartButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StartButtonActionPerformed(evt);
+            }
+        });
 
         NextButton.setText("NextNight");
 
@@ -106,6 +114,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void StartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartButtonActionPerformed
+        engine = new Engine();
+        Starter starter = new Starter();
+        starter.run();
+    }//GEN-LAST:event_StartButtonActionPerformed
 
     /**
      * @param args the command line arguments

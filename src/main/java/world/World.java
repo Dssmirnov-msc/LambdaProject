@@ -11,4 +11,8 @@ package world;
  */
 public class World {
     
+    
+    public void addRegion(Region region){
+    
+    }
 }
