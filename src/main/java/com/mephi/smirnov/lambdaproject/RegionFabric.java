@@ -3,19 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package world;
+package com.mephi.smirnov.lambdaproject;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.stream.Collectors;
+
 
 /**
  *
  * @author Dima
  */
 public class RegionFabric {
-    private ArrayList<String> name_list;
+    private final ArrayList<String> name_list;
     private int i = 0;
 
     public RegionFabric() {

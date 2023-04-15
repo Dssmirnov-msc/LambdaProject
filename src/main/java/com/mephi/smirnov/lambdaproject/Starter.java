@@ -5,9 +5,6 @@
  */
 package com.mephi.smirnov.lambdaproject;
 
-import world.RegionFabric;
-import world.World;
-
 /**
  *
  * @author Dima
@@ -21,6 +18,9 @@ public class Starter {
     
     public void run(){
         world = new World();
+        
+        create_organization();
+        
         create_regions();
     }
     
@@ -29,5 +29,12 @@ public class Starter {
         for (int i = 0; i < 20; i++) {
             world.addRegion(rf.create());
         }
+    }
+
+    private void create_organization() {
+        world.addOrganization(new Organization("Camarilla"));
+        world.addOrganization(new Organization("Anarchs"));
+        world.addOrganization(new Organization("Sabbat"));
+        world.addOrganization(new Organization("Thin-blooded"));
     }
 }

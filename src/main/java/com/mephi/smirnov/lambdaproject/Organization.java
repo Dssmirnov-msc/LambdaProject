@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package world;
+package com.mephi.smirnov.lambdaproject;
 
 /**
  *
  * @author Dima
  */
-public class Region {
+public class Organization {
     String name;
-    Region(String name) {
+
+    public Organization(String name) {
         this.name = name;
     }
     

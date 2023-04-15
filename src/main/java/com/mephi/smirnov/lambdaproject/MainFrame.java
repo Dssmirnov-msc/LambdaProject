@@ -5,8 +5,6 @@
  */
 package com.mephi.smirnov.lambdaproject;
 
-import dynamic.Engine;
-
 /**
  *
  * @author Dima
