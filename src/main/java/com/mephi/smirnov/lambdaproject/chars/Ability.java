@@ -7,8 +7,8 @@ package com.mephi.smirnov.lambdaproject.chars;
 
 /**
  *
- * @author Dmitry
+ * @author Dima
  */
-public class CharacterLoader {
+public class Ability {
     
 }

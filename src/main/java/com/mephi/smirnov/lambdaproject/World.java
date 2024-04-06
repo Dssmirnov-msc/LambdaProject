@@ -6,7 +6,7 @@
 package com.mephi.smirnov.lambdaproject;
 
 import com.mephi.smirnov.lambdaproject.map.Region;
-import com.mephi.smirnov.lambdaproject.chars.Character;
+import com.mephi.smirnov.lambdaproject.chars.Kindred;
 import java.util.ArrayList;
 
 /**
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class World {
     
     ArrayList<Region> regions;
-    ArrayList<Character> characters;
+    ArrayList<Kindred> characters;
     ArrayList<Organization> organizations;
     ArrayList<Clan> clans;
     

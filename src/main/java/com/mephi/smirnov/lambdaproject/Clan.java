@@ -11,4 +11,17 @@ package com.mephi.smirnov.lambdaproject;
  */
 public class Clan {
     
+    private String name;
+    
+    Clan(String name) {
+        this.name = name;
+    }
+            
+            
+    public static Clan chooseClan(String clanName){
+        ClanEnum foo = ClanEnum.valueOf(clanName);
+        return new Clan(foo.getTitle());
+    }
+
+    
 }

@@ -11,13 +11,15 @@ import com.mephi.smirnov.lambdaproject.Clan;
  *
  * @author Dmitry
  */
-public class CharacterCreator {
+public class KindredCreator {
+
+    
     private final String[] male_names;
     private final String[] male_surnames;
     private final String[] female_names;
     private final String[] female_surnames;
     
-    public CharacterCreator() {
+    public KindredCreator() {
         // Я потом перенесу списки в JSON, а пока мн лень
         male_names = new String[]{"Michael", "David"};
         male_surnames = new String[]{"Michaelson", "Davidson"};
@@ -25,13 +27,15 @@ public class CharacterCreator {
         female_surnames = new String[]{};
     }
     
-    public Character createMethuselah(Clan clan){
+    public Kindred createMethuselah(Clan clan){
         String name = null;
         String surname = null;
         
-        Character meth = new Character(name, surname, clan, 4);
+        Kindred meth = new Kindred(name, surname, clan, 4);
         
         return meth;
     }
-    
+    public static Kindred create() {
+        return new Kindred(); //To change body of generated methods, choose Tools | Templates.
+    }
 }
