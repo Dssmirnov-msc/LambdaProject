@@ -5,6 +5,8 @@
  */
 package com.mephi.smirnov.lambdaproject;
 
+import com.mephi.smirnov.lambdaproject.map.Region;
+import com.mephi.smirnov.lambdaproject.chars.Character;
 import java.util.ArrayList;
 
 /**

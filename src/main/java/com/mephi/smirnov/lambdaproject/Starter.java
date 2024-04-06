@@ -5,6 +5,8 @@
  */
 package com.mephi.smirnov.lambdaproject;
 
+import com.mephi.smirnov.lambdaproject.map.RegionFabric;
+
 /**
  *
  * @author Dima

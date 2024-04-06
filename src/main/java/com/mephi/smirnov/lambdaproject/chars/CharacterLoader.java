@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mephi.smirnov.lambdaproject;
+package com.mephi.smirnov.lambdaproject.chars;
 
 /**
  *
- * @author Dima
+ * @author Dmitry
  */
-public class Region {
-    String name;
-    Region(String name) {
-        this.name = name;
-    }
+public class CharacterLoader {
     
 }

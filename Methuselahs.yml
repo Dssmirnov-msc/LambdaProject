@@ -1,0 +1,37 @@
+---
+id: 1
+name: "Victoria"
+surname: "Ash"
+generation: 8
+embraceYear: 1650
+visualAge: 30
+clan: "Toreador"
+abilities:
+    strength: 3
+    dexterity: 4
+    stamina: 4
+    charisma: 5
+    manipulation: 5
+    appearance: 5
+    perception: 5
+    intelligence: 5
+    wits: 4
+---
+id: 2
+name: "Regina"
+surname: "Blake"
+clan: "Toreador"
+generation: 9
+embraceYear: 1650
+visualAge: 18
+sireId: 1
+abilities:
+    strength: 2
+    dexterity: 4
+    stamina: 3
+    charisma: 4
+    manipulation: 4
+    appearance: 5
+    perception: 5
+    intelligence: 3
+    wits: 4

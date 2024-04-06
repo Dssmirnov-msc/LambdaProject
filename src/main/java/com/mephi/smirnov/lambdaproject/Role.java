@@ -7,8 +7,8 @@ package com.mephi.smirnov.lambdaproject;
 
 /**
  *
- * @author Dima
+ * @author Dmitry
  */
-public class Base {
+public class Role {
     
 }

@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mephi.smirnov.lambdaproject;
+package com.mephi.smirnov.lambdaproject.chars;
+
+import com.mephi.smirnov.lambdaproject.Clan;
 
 /**
  *
@@ -15,6 +17,7 @@ public class Character {
     private String surname; 
     private Clan clan; 
     private int generation;
+    private int hungerLevel;
     
     Character(String name, String surname, Clan clan, int generation) {
         this.name = name;
