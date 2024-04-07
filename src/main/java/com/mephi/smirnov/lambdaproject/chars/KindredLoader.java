@@ -12,12 +12,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.events.DocumentEndEvent;
-import org.yaml.snakeyaml.events.DocumentStartEvent;
-import org.yaml.snakeyaml.events.Event;
-import org.yaml.snakeyaml.events.ScalarEvent;
-import org.yaml.snakeyaml.events.StreamEndEvent;
-import org.yaml.snakeyaml.events.StreamStartEvent;
+import org.yaml.snakeyaml.events.*;
 
 /**
  *
@@ -29,17 +24,21 @@ public class KindredLoader {
     private ArrayList<Kindred> readedList;
     private String key;
     private int keyCounter = 0;
-
+    private boolean collectionFlag = false;
+    private String collectionTag = "none";
+    private int counter = 0;
+    private int level;
     public ArrayList<Kindred> getReadedList() {
         return readedList;
     }
     
-    public void loadFile(String path) throws FileNotFoundException, IOException, Exception{
+    public void loadFile(String path) throws FileNotFoundException, IOException {
         Yaml yaml = new Yaml();
         InputStream inputStream = findFile(path);
         Iterable<Event> data = yaml.parse(new InputStreamReader(inputStream));
-        inputStream.close();
+        readedList = new ArrayList<>();
         handleFile(data);
+        inputStream.close();
     }
 
     private InputStream findFile(String path) throws FileNotFoundException{
@@ -47,18 +46,20 @@ public class KindredLoader {
         return inputStream;
     }
 
-    private ArrayList<Kindred> handleFile(Iterable<Event> data) throws Exception {
+    private ArrayList<Kindred> handleFile(Iterable<Event> data)  {
+        counter = 0;
         for (Event event : data) {
             parseEvent(event);
+            counter++;
         }
         
         return null;
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void parseEvent(Event event) throws Exception {
+    private void parseEvent(Event event) {
         
-        
+        System.out.println(event.getEventId().toString());
         switch(event.getEventId()){
             case StreamStart:
                 break;
@@ -66,21 +67,37 @@ public class KindredLoader {
                 break;
             case DocumentStart:
                 createCurrent();
+                break;
             case DocumentEnd:
                 addCurrentToList();
+            case MappingStart:
+                parseMapping((MappingStartEvent) event);break;
+            case MappingEnd:
+                collectionTag = "none";level--;
+                break;
             case Scalar:
-                parseScalarEvent((ScalarEvent) event);
+                parseScalarEvent((ScalarEvent) event);break;
             default:
-                throw new Exception("UnknownEvent");
+                break;
+                //throw new Exception("UnknownEvent");
         }
     }
 
     private void parseScalarEvent(ScalarEvent event) {
+//        if (collectionFlag) {
+//            coolectionTag = event.getValue();
+//            collectionFlag = false;
+//            return;
+//        }
+//        
+//        
         if(keyCounter==0) {
             key = event.getValue();
+            keyCounter++;
         } else {
             String value = event.getValue();
-            currentReaded.addCharacteristic(key, value);
+            currentReaded.addCharacteristic(key, value, collectionTag);
+            keyCounter = 0;
         }
         
     }
@@ -92,6 +109,14 @@ public class KindredLoader {
 
     private void addCurrentToList() {
         this.readedList.add(currentReaded);
+    }
+
+    private void parseMapping(MappingStartEvent mappingStartEvent) {
+        if (level > 0){
+            collectionFlag = true;
+            keyCounter = 0;
+            collectionTag = key;
+        }
     }
     
     

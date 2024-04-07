@@ -71,14 +71,17 @@ public class KindredLoaderTest {
             Logger.getLogger(KindredLoaderTest.class.getName()).log(Level.SEVERE, null, ex);
         }
         for (Event event : yaml.parse(new InputStreamReader(inputStream))) {
+            System.out.println(event.getEventId().toString());
           if (e == null) {
             assertTrue(event instanceof StreamStartEvent);
           }
           e = event;
+          System.out.println(event.toString());
           counter++;
         }
+        System.out.println("End");
         assertTrue(e instanceof StreamEndEvent);
-        assertEquals(14, counter);
+        assertEquals(82, counter);
     }
     
     /**
@@ -105,7 +108,7 @@ public class KindredLoaderTest {
             Logger.getLogger(KindredLoaderTest.class.getName()).log(Level.SEVERE, null, ex);
             fail(ex.getMessage());
         }
-        
+        System.out.println("End");
     }
     
     @Test

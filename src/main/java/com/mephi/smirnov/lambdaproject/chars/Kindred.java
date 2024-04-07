@@ -6,6 +6,7 @@
 package com.mephi.smirnov.lambdaproject.chars;
 
 import com.mephi.smirnov.lambdaproject.Clan;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -16,6 +17,8 @@ import java.util.GregorianCalendar;
  */
 public class Kindred {
     
+    
+    
     private String name;
     private String surname; 
     private Clan clan; 
@@ -24,6 +27,8 @@ public class Kindred {
     private int id;
     private Calendar embraceYear;
     private int visualAge; 
+    private ArrayList<Ability> abilities;
+    
     
     Kindred(String name, String surname, Clan clan, int generation) {
         this.name = name;
@@ -33,10 +38,10 @@ public class Kindred {
     }
 
     Kindred() {
-       
+       abilities = new ArrayList<>();
     }
 
-    void addCharacteristic(String key, String value) {
+    void addSimpleCharacteristic(String key, String value) {
         switch(key){
             case "id":
                 id = Integer.parseInt(value);
@@ -56,5 +61,22 @@ public class Kindred {
             default:
         }
     }
+    
+    private void addAbility(String key, String value) {
+        int level = Integer.parseInt(value);
+        this.abilities.add(Ability.create(key, level));
+    }
+    
+    void addCharacteristic(String key, String value, String coolectionTag) {
+        switch(coolectionTag){
+            case "abilities":
+                addAbility(key,value);
+                break;
+            default :
+                addSimpleCharacteristic(key,value);
+        }
+    }
+
+    
     
 }
