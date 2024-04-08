@@ -24,6 +24,8 @@ public class Starter {
         create_organization();
         
         create_regions();
+        
+        create_start_kindred();
     }
     
     private void create_regions(){
@@ -38,5 +40,9 @@ public class Starter {
         world.addOrganization(new Organization("Anarchs"));
         world.addOrganization(new Organization("Sabbat"));
         world.addOrganization(new Organization("Thin-blooded"));
+    }
+
+    private void create_start_kindred() {
+        
     }
 }
