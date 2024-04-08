@@ -23,5 +23,9 @@ public class Clan {
         return new Clan(foo.getTitle());
     }
 
+    public String getName() {
+        return name;
+    }
+
     
 }

@@ -10,8 +10,8 @@ package com.mephi.smirnov.lambdaproject;
  * @author Dmitry
  */
 public enum ClanEnum {
-    TOREADOR ("Toreador"),
-    VENTRUE ("Ventrue");
+    Toreador ("Toreador"),
+    Ventrue ("Ventrue");
     
     private String title;
 

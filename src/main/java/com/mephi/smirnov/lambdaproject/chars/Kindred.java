@@ -9,6 +9,7 @@ import com.mephi.smirnov.lambdaproject.Clan;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 
 /**
@@ -41,6 +42,17 @@ public class Kindred {
        abilities = new ArrayList<>();
     }
 
+    @Override
+    public String toString() {
+        return "This is Kindred named " +
+                name + " " + surname + " of "+
+                generation + " generation, embraced in " + 
+                embraceYear.get(Calendar.YEAR) + 
+                ", from " + clan.getName() + " clan"; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    
     void addSimpleCharacteristic(String key, String value) {
         switch(key){
             case "id":

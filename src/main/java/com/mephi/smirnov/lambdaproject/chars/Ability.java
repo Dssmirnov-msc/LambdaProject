@@ -19,7 +19,7 @@ public class Ability {
     }
     
     public static Ability create(String key, int level){
-        String title = AbilityEnum.valueOf(key).getTitle();
+        String title = AbilityEnum.valueOf(key.toUpperCase()).getTitle();
         return new Ability(title, level);
     }
     

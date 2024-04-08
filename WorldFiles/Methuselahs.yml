@@ -35,3 +35,21 @@ abilities:
     perception: 5
     intelligence: 3
     wits: 4
+---
+id: 3
+name: "Edgar"
+surname: "Drummond"
+clan: "Ventrue"
+generation: 8
+embraceYear: 1831
+visualAge: 35
+abilities:
+    strength: 2
+    dexterity: 4
+    stamina: 4
+    charisma: 2
+    manipulation: 5
+    appearance: 1
+    perception: 2
+    intelligence: 2
+    wits: 1

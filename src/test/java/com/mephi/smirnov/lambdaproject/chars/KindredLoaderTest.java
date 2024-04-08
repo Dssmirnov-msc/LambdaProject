@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Level;
@@ -71,7 +72,7 @@ public class KindredLoaderTest {
             Logger.getLogger(KindredLoaderTest.class.getName()).log(Level.SEVERE, null, ex);
         }
         for (Event event : yaml.parse(new InputStreamReader(inputStream))) {
-            System.out.println(event.getEventId().toString());
+           // System.out.println(event.getEventId().toString());
           if (e == null) {
             assertTrue(event instanceof StreamStartEvent);
           }
@@ -81,7 +82,7 @@ public class KindredLoaderTest {
         }
         System.out.println("End");
         assertTrue(e instanceof StreamEndEvent);
-        assertEquals(82, counter);
+        assertEquals(121, counter);
     }
     
     /**
@@ -107,6 +108,10 @@ public class KindredLoaderTest {
         } catch (Exception ex) {
             Logger.getLogger(KindredLoaderTest.class.getName()).log(Level.SEVERE, null, ex);
             fail(ex.getMessage());
+        }
+        ArrayList<Kindred> result = instance.getReadedList();
+        for (Kindred kindred : result) {
+            System.out.println(kindred.toString());
         }
         System.out.println("End");
     }

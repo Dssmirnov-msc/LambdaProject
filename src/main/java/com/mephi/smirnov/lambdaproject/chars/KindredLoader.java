@@ -24,15 +24,16 @@ public class KindredLoader {
     private ArrayList<Kindred> readedList;
     private String key;
     private int keyCounter = 0;
-    private boolean collectionFlag = false;
     private String collectionTag = "none";
     private int counter = 0;
-    private int level;
+    private int mappingLevel;
+    
+    
     public ArrayList<Kindred> getReadedList() {
         return readedList;
     }
     
-    public void loadFile(String path) throws FileNotFoundException, IOException {
+    public void loadFile(String path) throws FileNotFoundException, IOException, Exception {
         Yaml yaml = new Yaml();
         InputStream inputStream = findFile(path);
         Iterable<Event> data = yaml.parse(new InputStreamReader(inputStream));
@@ -46,20 +47,13 @@ public class KindredLoader {
         return inputStream;
     }
 
-    private ArrayList<Kindred> handleFile(Iterable<Event> data)  {
-        counter = 0;
+    private void handleFile(Iterable<Event> data) throws Exception  {
         for (Event event : data) {
             parseEvent(event);
-            counter++;
         }
-        
-        return null;
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void parseEvent(Event event) {
-        
-        System.out.println(event.getEventId().toString());
+    private void parseEvent(Event event) throws Exception {
         switch(event.getEventId()){
             case StreamStart:
                 break;
@@ -69,28 +63,21 @@ public class KindredLoader {
                 createCurrent();
                 break;
             case DocumentEnd:
-                addCurrentToList();
+                addCurrentToList();break;
             case MappingStart:
                 parseMapping((MappingStartEvent) event);break;
             case MappingEnd:
-                collectionTag = "none";level--;
+                collectionTag = "none";mappingLevel--;
                 break;
             case Scalar:
                 parseScalarEvent((ScalarEvent) event);break;
             default:
-                break;
-                //throw new Exception("UnknownEvent");
+                 throw new Exception("UnknownEvent");
+               
         }
     }
 
     private void parseScalarEvent(ScalarEvent event) {
-//        if (collectionFlag) {
-//            coolectionTag = event.getValue();
-//            collectionFlag = false;
-//            return;
-//        }
-//        
-//        
         if(keyCounter==0) {
             key = event.getValue();
             keyCounter++;
@@ -112,11 +99,11 @@ public class KindredLoader {
     }
 
     private void parseMapping(MappingStartEvent mappingStartEvent) {
-        if (level > 0){
-            collectionFlag = true;
+        if (mappingLevel > 0){
             keyCounter = 0;
             collectionTag = key;
         }
+        mappingLevel++;
     }
     
     
